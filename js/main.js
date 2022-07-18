@@ -1,15 +1,20 @@
+let cardsContainer = document.querySelector(".container__cards");
+let info = document.querySelector(".list__item");
+
 const get = async () => {
-  let data = await axios.get(
-    "https://larnu-dev-upy5mhs63a-rj.a.run.app/api/v1/categories"
-  );
-  console.log(data.data.communityCategories);
-  const course = data.data.communityCategories;
-  print(course);
+  return new Promise(function (resolve, reject) {
+    axios
+      .get("https://larnu-dev-upy5mhs63a-rj.a.run.app/api/v1/categories")
+      .then(function (response) {
+        resolve(response.data.communityCategories);
+        print(response.data.communityCategories);
+      })
+      .catch(function (error) {
+        reject(error);
+      });
+  });
 };
 get();
-
-let cardsContainer = document.querySelector(".container__cards");
-let info = document.querySelector(".list__video");
 
 function print(course) {
   for (let i = 0; i < course.length; i++) {
@@ -17,7 +22,7 @@ function print(course) {
 
     console.log(element.icon);
     if (element.name !== "testeo" && element.background !== null) {
-      cardsContainer.innerHTML += `
+      (cardsContainer.innerHTML += `
     <div class="card__item">
     <div class="card__img-container">
     <img class="card__background"
@@ -31,9 +36,10 @@ function print(course) {
   <div><h2>${element.name}</h2>
   </div>
   </div>
-    `, info.innerHTML += `<a href="#${element.name}" >
+    `),
+        (info.innerHTML += `<a href="#${element.name}" >
     <p>${element.name}</p>
-    <span>Usuarios ${element.users}</span>`;
+    <span>Usuarios ${element.users}</span>`);
     }
   }
 }

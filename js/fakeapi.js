@@ -1,5 +1,4 @@
 const course = [
-  
   {
     date: "29/06/2022",
     title: "Explicación proyecto final HTML & CSS",
@@ -51,18 +50,31 @@ const course = [
 ];
 
 let cardsContainer = document.querySelector(".container__cards");
-let info = document.querySelector(".list__video");
+let info = document.querySelector(".list__item");
 
 for (i = 0; i < course.length; i++) {
   console.log(course[i].title);
-  cardsContainer.innerHTML += `<div class="card__item" id="${course[i].date}">
+  (cardsContainer.innerHTML += `<div class="card__item" id="${course[i].date}">
   ${course[i].video}
   <div class="card__text-container">
   <div><h2>${course[i].title}</h2>
   <span>${course[i].date}</span></div>
   </div>
   </div>
-  `,info.innerHTML += `<a href="#${course[i].date}" >
+  `),
+    (info.innerHTML += `<a href="#${course[i].date}" >
   <p>${course[i].title}</p>
-  <span>${course[i].date}</span>`;
+  <span>${course[i].date}</span>`);
 }
+
+// 
+// const get = async () => {
+//   let data = await axios.get(
+//     "https://larnu-dev-upy5mhs63a-rj.a.run.app/api/v1/categories"
+//   );
+//   console.log(data.data.communityCategories);
+//   const course = data.data.communityCategories;
+//   print(course);
+// };
+
+// This logs errors when the app gets from the API on page load

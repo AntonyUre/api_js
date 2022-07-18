@@ -1,6 +1,7 @@
-/node_modules
 .vscode
 sass
 style.css.map
 package-lock.json
 package.json
+js/fakeapi
+js/test
